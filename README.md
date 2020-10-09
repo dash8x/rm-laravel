@@ -32,7 +32,8 @@ Optionally you can use the Facade for shorter code. Add this to your facades:
 ### Setting up the Revenue Monster credentials
 
 Add your Revenue Monster Client ID and Client Secret to your `config/services.php`.
-You can refer to how to create the API Client from the (Official Revenue Monster Documentation)[https://doc.revenuemonster.my/docs/quickstart/signature-algorithm].
+You can refer to how to create the API Client from the [Official Revenue Monster Documentation](https://doc.revenuemonster.my/docs/quickstart/signature-algorithm).
+
 Make sure to add the private key file to gitignore if you've it in the project directory.
 
 ``` php
