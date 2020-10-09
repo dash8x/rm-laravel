@@ -1,0 +1,59 @@
+{
+    "name": "dash8x/rm-laravel",
+    "description": "Laravel wrapper for Revenue Monster PHP SDK",
+    "keywords": [
+        "dash8x",
+        "rm-laravel",
+        "rm",
+        "revenue monster",
+        "malaysia",
+        "payments"
+    ],
+    "homepage": "https://github.com/dash8x/rm-laravel",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Arushad Ahmed (@dash8x)",
+            "email": "contact@arushad.org",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "illuminate/support": "^5.5|^6|^7",
+        "revenuemonster/sdk": "^1.1"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.0",
+        "phpunit/phpunit": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Dash8x\\RevenueMonster\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Dash8x\\RevenueMonster\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Dash8x\\RevenueMonster\\Providers\\RevenueMonsterServiceProvider"
+            ],
+            "aliases": {
+                "RevenueMonster": "Dash8x\\RevenueMonster\\Facades\\RevenueMonsterFacade"
+            }
+        }
+    }
+}
