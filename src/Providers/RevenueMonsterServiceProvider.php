@@ -2,12 +2,11 @@
 
 namespace Dash8x\RevenueMonster\Providers;
 
-use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
 use Dash8x\RevenueMonster\RevenueMonster;
 
-class RevenueMonsterServiceProvider extends ServiceProvider implements DeferrableProvider
+class RevenueMonsterServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
