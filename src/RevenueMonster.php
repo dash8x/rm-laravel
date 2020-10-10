@@ -2,6 +2,8 @@
 
 namespace Dash8x\RevenueMonster;
 
+use Dash8x\RevenueMonster\Modules\PaymentModule;
+
 class RevenueMonster extends \RevenueMonster\SDK\RevenueMonster
 {
     /**
@@ -58,5 +60,23 @@ class RevenueMonster extends \RevenueMonster\SDK\RevenueMonster
     public function payment()
     {
         return $this->payment;
+    }
+
+    /**
+     * Override for custom payment module
+     *
+     * @param $name
+     * @return mixed
+     * @throws \Exception
+     */
+    public function __get($name)
+    {
+        if ($name != 'payment') {
+            return parent::__get($name);
+        }
+
+        $obj = new PaymentModule($this);
+        $this->{$name} = $obj;
+        return $obj;
     }
 }
