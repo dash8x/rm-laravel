@@ -15,14 +15,6 @@ You can install the package via composer:
 composer require dash8x/rm-laravel
 ```
 
-**Laravel 5.5** uses Package Auto-Discovery, so doesn't require you to manually add the ServiceProvider/Facade.
-
-After updating composer, add the ServiceProvider to the providers array in config/app.php
-
-``` bash
-Dash8x\RevenueMonster\Providers\RevenueMonsterServiceProvider::class;
-```
-
 Optionally you can use the Facade for shorter code. Add this to your facades:
 
 ``` bash
