@@ -21,8 +21,7 @@
     ],
     "require": {
         "php": "^8.0",
-        "illuminate/support": "^6.20 || ^7.30 || ^8.83 || ^9.0 || ^10.0 || ^11.0",
-        "revenuemonster/sdk": "^2.0"
+        "illuminate/support": "^6.20 || ^7.30 || ^8.83 || ^9.0 || ^10.0 || ^11.0"
     },
     "require-dev": {
         "orchestra/testbench": "^4.0 || ^5.0 || ^6.44 || ^7.0 || ^8.0 || ^9.0",
