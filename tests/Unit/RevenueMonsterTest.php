@@ -25,16 +25,26 @@ class RevenueMonsterTest extends TestCase
     /** @test */
     public function it_can_load_the_revenue_monster_sdk_using_app_make()
     {
-        $this->expectException(ApiException::class);
+        try {
+            $rm = App::make('rm');
+        } catch (ApiException $e) {
+            $this->assertInstanceOf(ApiException::class, $e);
+            return;
+        }
 
-        $rm = App::make('rm');
+        $this->fail(sprintf('The expected "%s" exception was not thrown.', ApiException::class));
     }
 
     /** @test */
     public function it_can_load_the_revenue_monster_sdk_using_facade()
     {
-        $this->expectException(ApiException::class);
+        try {
+            $rm = RevenueMonsterFacade::merchant();
+        } catch (ApiException $e) {
+            $this->assertInstanceOf(ApiException::class, $e);
+            return;
+        }
 
-        $rm = RevenueMonsterFacade::merchant();
+        $this->fail(sprintf('The expected "%s" exception was not thrown.', ApiException::class));
     }
 }
