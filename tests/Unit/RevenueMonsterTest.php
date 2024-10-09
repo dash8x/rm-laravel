@@ -19,7 +19,6 @@ class RevenueMonsterTest extends TestCase
             'sandbox' => 'xxxxxx', // Whether to use the sandbox mode
             'private_key' => __DIR__ . '/../sample-private-key.pem', // Path to the private key file
         ]);
-
     }
 
     /** @test */
