@@ -29,14 +29,14 @@ jobs:
                         carbon: ^2.63
                         phpunit: ^10.5
                     -   laravel: 9.*
-                        testbench: ^7.30
+                        testbench: 7.*
                         carbon: ^2.63
                         phpunit: ^9.5
                     -   laravel: ^8.6
                         testbench: ^6.44
                         carbon: ^2.63
                         phpunit: ^9.5
-                    -   laravel: 7.*
+                    -   laravel: ^7.30
                         testbench: 5.*
                         carbon: ^2.63
                         phpunit: ^8.5
