@@ -1,0 +1,116 @@
+name: tests
+
+on:
+    pull_request:
+        branches:
+            - main
+    push:
+        branches:
+            - main
+
+jobs:
+    tests:
+        runs-on: ${{ matrix.os }}
+
+        strategy:
+            fail-fast: true
+            matrix:
+                os: [ ubuntu-latest ]
+                php: [ 8.3, 8.2, 8.1, 8.0, 7.4 ]
+                laravel: [ 11.*, 10.*, 9.*, 8.*, 7.*, 6.*, ^5.5 ]
+                stability: [ prefer-lowest, prefer-stable ]
+                include:
+                    -   laravel: 11.*
+                        testbench: 9.*
+                        carbon: ^2.63
+                        phpunit: ^10.5
+                    -   laravel: 10.*
+                        testbench: 8.*
+                        carbon: ^2.63
+                        phpunit: ^10.5
+                    -   laravel: 9.*
+                        testbench: 7.*
+                        carbon: ^2.63
+                        phpunit: ^9.5
+                    -   laravel: 8.*
+                        testbench: ^6.44
+                        carbon: ^2.63
+                        phpunit: ^9.5
+                    -   laravel: 7.*
+                        testbench: 5.*
+                        carbon: ^2.63
+                        phpunit: ^8.5
+                    -   laravel: 6.*
+                        testbench: 4.*
+                        carbon: ^2.63
+                        phpunit: ^8.5
+                    -   laravel: ^5.5
+                        testbench: 4.*
+                        carbon: ^2.63
+                        phpunit: ^8.5
+                exclude:
+                    -   laravel: 11.*
+                        php: 8.1
+                    -   laravel: 11.*
+                        php: 8.0
+                    -   laravel: 11.*
+                        php: 7.4
+                    -   laravel: 10.*
+                        php: 8.0
+                    -   laravel: 10.*
+                        php: 7.4
+                    -   laravel: 9.*
+                        php: 7.4
+                    -   laravel: 7.*
+                        php: 8.3
+                    -   laravel: 7.*
+                        php: 8.2
+                    -   laravel: 7.*
+                        php: 8.1
+                    -   laravel: 6.*
+                        php: 8.3
+                    -   laravel: 6.*
+                        php: 8.2
+                    -   laravel: 6.*
+                        php: 8.1
+                    -   laravel: ^5.5
+                        php: 8.3
+                    -   laravel: ^5.5
+                        php: 8.2
+                    -   laravel: ^5.5
+                        php: 8.1
+
+        name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }} - ${{ matrix.os }}
+
+        steps:
+            -   name: Checkout code
+                uses: actions/checkout@v4
+
+            -   name: Install SQLite 3
+                run: |
+                    sudo apt-get update
+                    sudo apt-get install sqlite3 -y
+
+            -   name: Setup PHP
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: ${{ matrix.php }}
+                    extensions: curl, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, iconv
+                    coverage: ${{ startsWith(github.event.head_commit.message, 'coverage') && matrix.php == '8.3' && matrix.laravel == '11.*' && matrix.stability == 'prefer-stable' && 'xdebug' || 'none' }}
+
+            -   name: Install dependencies
+                run: |
+                    composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" "nesbot/carbon:${{ matrix.carbon }}" "phpunit/phpunit:${{ matrix.phpunit }}" --no-interaction --no-update
+                    composer update --${{ matrix.stability }} --prefer-dist --no-interaction
+
+            -   name: Execute tests
+                run: |
+                    vendor/bin/phpunit ${{ startsWith(github.event.head_commit.message, 'coverage') && matrix.php == '8.3' && matrix.laravel == '11.*' && matrix.stability == 'prefer-stable' && '--coverage-clover=clover.xml' || '' }}
+
+            -   name: Make code coverage badge
+                if: startsWith(github.event.head_commit.message, 'coverage') && matrix.php == '8.3' && matrix.laravel == '11.*' && matrix.stability == 'prefer-stable'
+                uses: timkrase/phpunit-coverage-badge@v1.2.1
+                with:
+                    coverage_badge_path: .github/coverage.svg
+                    push_badge: true
+                    repo_token: ${{ secrets.GITHUB_TOKEN }}

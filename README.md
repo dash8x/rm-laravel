@@ -1,8 +1,8 @@
 # Revenue Monster Laravel Wrapper
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/dash8x/rm-laravel.svg?style=flat-square)](https://packagist.org/packages/dash8x/rm-laravel)
-[![Build Status](https://img.shields.io/travis/dash8x/rm-laravel/master.svg?style=flat-square)](https://travis-ci.org/dash8x/rm-laravel)
-[![Quality Score](https://img.shields.io/scrutinizer/g/dash8x/rm-laravel.svg?style=flat-square)](https://scrutinizer-ci.com/g/dash8x/rm-laravel)
+[![Test Status](../../actions/workflows/run-tests.yml/badge.svg)](../../actions/workflows/run-tests.yml)
+![Code Coverage Badge](./.github/coverage.svg)
 [![Total Downloads](https://img.shields.io/packagist/dt/dash8x/rm-laravel.svg?style=flat-square)](https://packagist.org/packages/dash8x/rm-laravel)
 
 Laravel wrapper for [Revenue Monster PHP SDK](https://github.com/RevenueMonster/RM-API-SDK-PHP).
