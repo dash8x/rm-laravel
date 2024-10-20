@@ -34,7 +34,7 @@ Make sure to add the private key file to gitignore if you've it in the project d
 'rm' => [
     'client_id' => env('RM_CLIENT_ID'), // Client ID 
     'client_secret' => env('RM_CLIENT_SECRET'), // Client Secret
-    'sandbox' => env('RM_SANDBOX', false), // Whether to use the sandbox mode
+    'sand_box' => env('RM_SANDBOX', false), // Whether to use the sandbox mode
     'private_key' => base_path('/rm-private-key.pem'), // Path to the private key file                           
 ],
 ...
