@@ -25,7 +25,7 @@ class RevenueMonsterServiceProvider extends ServiceProvider
             $config = $this->app['config']['services.rm'];
             $client_id = Arr::get($config, 'client_id');
             $client_secret = Arr::get($config, 'client_secret');
-            $is_sandbox = Arr::get($config, 'sand_box');
+            $is_sandbox = Arr::get($config, 'sandbox');
             $private_key = Arr::get($config, 'private_key');
 
             return new RevenueMonster([
