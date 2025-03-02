@@ -21,12 +21,12 @@
     ],
     "require": {
         "php": "^8.0",
-        "illuminate/support": "^6.20 || ^7.30 || ^8.83 || ^9.0 || ^10.0 || ^11.0",
+        "illuminate/support": "^6.20 || ^7.30 || ^8.83 || ^9.0 || ^10.0 || ^11.0 || ^12.0",
         "revenuemonster/sdk": "^2.0"
     },
     "require-dev": {
-        "orchestra/testbench": "^4.0 || ^5.0 || ^6.44 || ^7.0 || ^8.0 || ^9.0",
-        "phpunit/phpunit": "^8.5 || ^9.5 || ^10.5"
+        "orchestra/testbench": "^4.0 || ^5.0 || ^6.44 || ^7.0 || ^8.0 || ^9.0 || ^10.0",
+        "phpunit/phpunit": "^8.5 || ^9.5 || ^10.5 || ^11.5.3"
     },
     "autoload": {
         "psr-4": {
